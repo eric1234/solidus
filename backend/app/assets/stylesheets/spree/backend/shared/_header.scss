@@ -5,6 +5,8 @@
   padding: 15px 14px;
   background-color: very-light($color-3, 4);
   border-bottom: 1px solid $color-border;
+
+  @media print { display: none }
 }
 
 .page-title {

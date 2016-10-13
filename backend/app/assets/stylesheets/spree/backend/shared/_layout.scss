@@ -10,11 +10,13 @@ body {
 .admin-nav {
   @include position(absolute, 0 null 0 0);
   width: $width-sidebar;
+  @media print { display: none }
 }
 
 .main-content {
   margin-left: $width-sidebar;
   @include clearfix;
+  @media print { margin-left: 0 }
 }
 
 #content {

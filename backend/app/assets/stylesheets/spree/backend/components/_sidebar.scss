@@ -29,4 +29,6 @@
       min-height: 3em;
     }
   }
+
+  @media print { display: none }
 }
