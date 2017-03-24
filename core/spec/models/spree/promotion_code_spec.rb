@@ -13,6 +13,16 @@ RSpec.describe Spree::PromotionCode do
         expect(promotion_code.value).to eq('newcode')
       end
     end
+
+    describe '#remove_excess_whitespace' do
+      let(:promotion) { create(:promotion, code: 'new code ') }
+      let(:promotion_code) { promotion.codes.first }
+
+      it 'removes excess whitespace before saving' do
+        subject
+        expect(promotion_code.value).to eq 'newcode'
+      end
+    end
   end
 
   describe "#usage_limit_exceeded?" do

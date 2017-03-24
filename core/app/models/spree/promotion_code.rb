@@ -6,6 +6,7 @@ class Spree::PromotionCode < Spree::Base
   validates :promotion, presence: true
 
   before_save :downcase_value
+  before_save :remove_excess_whitespace
 
   self.whitelisted_ransackable_attributes = ['value']
 
@@ -37,5 +38,9 @@ class Spree::PromotionCode < Spree::Base
 
   def downcase_value
     self.value = value.downcase
+  end
+
+  def remove_excess_whitespace
+    value&.gsub! /\s+/, ''
   end
 end
