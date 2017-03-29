@@ -51,6 +51,7 @@ module Spree
         @search = @collection.ransack(params[:q])
         @collection = @search.result.
           includes(promotion_includes).
+          references(promotion_references).
           page(params[:page]).
           per(params[:per_page] || Spree::Config[:promotions_per_page])
 
@@ -59,6 +60,10 @@ module Spree
 
       def promotion_includes
         [:promotion_actions]
+      end
+
+      def promotion_references
+        []
       end
 
       def permitted_promo_builder_params
